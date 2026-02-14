@@ -1,0 +1,44 @@
+/*Single document in a collection*/
+>db.article.findOne()
+/*All documents in a collection*/
+>db.article.find().pretty
+/*Filter documents with equality condition*/
+>db.article.find({
+author: {$eq: "devil"}
+}).pretty()
+/*filter documents with greater than (gt) or lesser than(lt) condition*/
+>db.article.find({length: {$gte: 510}}).pretty()
+>db.article.find({length: {$lte: 23}}).pretty()
+/*check the existence of field */
+db.students.find({time: {$exists:"true"}}).pretty()
+#Advanced mongoDB query techniques
+# Specify AND conditions
+db.articles.find({
+$and: [
+    {author:"Aditya"},
+    {level:"Basic"}
+    ]
+  }).pretty()
+
+  #Specify AND as well as OR conditions
+  db.article.find({
+  $or: [
+  {level: "basic", author:"Aditya"},
+   { $and:[
+     {author: "devil"},
+     {level:"Medium"}
+    ]
+   }
+  ]
+)}.pretty()
+
+#Use OR conditions
+db.articles.find({
+$or: [
+   {author: "Rakesh"},
+   {level: "high"}
+   ]
+  }).pretty()
+
+#Limit the number of results
+db.artcile.find({author: "devil"}).limit(2).pretty
