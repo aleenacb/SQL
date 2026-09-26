@@ -1,0 +1,57 @@
+drop database employees;
+create database employees;
+use employees;
+create table employees(
+id int primary key,
+name varchar(100),
+department varchar(50),
+salary decimal(10, 2),
+city varchar(50)
+);
+
+insert into employees(id, name, department, salary, city) values
+(1, "Anu", "IT", 50000, "Kochi"),
+(2, "Rahul", "HR", 40000, "Bangalore"),
+(3, "Meera", "IT", 65000, "Chennai"),
+(4, "Arjun", "sales", 45000, "Kochi"),
+(5, "Diya", "IT", 55000, "Bangalore");
+
+select * from employees;
+
+select name from employees;
+
+select name, salary from employees;
+
+select * from employees 
+where department = "IT";
+
+select * from employees
+where salary > 50000;
+
+select * from employees order by salary asc;
+
+select * from employees order by salary desc;
+
+select name, salary from employees where department = "IT" and salary > 50000 order by salary desc;
+
+select * from employees where salary > 45000;
+
+select distinct city from employees;
+
+select city from employees;
+
+select * from employees where department = "IT" or department = "HR";
+
+-- instead of writing 
+-- where department = "IT" or department = "HR" or department = "Sales";
+-- we can write, where department in("IT", "HR", "Sales");
+
+select * from employees where department in("IT","HR","Sales");
+
+select * from employees where salary between 40000 and 50000;
+
+select * from employees where name like "A%";
+
+select * from employees where name like "a%";
+
+select * from employees where name like "e%";
