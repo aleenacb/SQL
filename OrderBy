@@ -1,0 +1,19 @@
+drop database employees;
+create database employees;
+use employees;
+create table employees(
+id int primary key,
+name varchar(100),
+department varchar(50),
+salary decimal(10, 2),
+city varchar(50)
+);
+
+insert into employees(id, name, department, salary, city) values
+(1, "Anu", "IT", 50000, "Kochi"),
+(2, "Rahul", "HR", 40000, "Bangalore"),
+(3, "Meera", "IT", 65000, "Chennai"),
+(4, "Arjun", "sales", 45000, "Kochi"),
+(5, "Diya", "IT", 55000, "Bangalore");
+
+select salary from employees order by salary desc limit 1 offset 1;
