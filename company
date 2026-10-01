@@ -1,0 +1,39 @@
+-- drop database employees;
+create database company;
+use company;
+
+drop table if exists employees;
+drop table if exists departments;
+use employees;
+create table employees(
+id int primary key,
+name varchar(100),
+dep_id int,
+salary decimal(10, 2),
+city varchar(50)
+);
+
+insert into employees(id, name, dep_id, salary, city) values
+(1, "Anu", 1, 50000, "Kochi"),
+(2, "Rahul", 2, 40000, "Bangalore"),
+(3, "Meera", 1, 65000, "Chennai"),
+(4, "Arjun", 3, 45000, "Kochi"),
+(5, "Diya", 1, 55000, "Bangalore");
+
+-- Department table
+create table department(
+dep_id int primary key,
+department varchar(50)
+);
+insert into department(dep_id, department) values
+(1, "IT"),
+(2, "HR"),
+(3, "Sales");
+-- update employees set dep_id = 1 where departments = "IT";
+-- update employees set dep_id = 2 where departments = "HR";
+-- update employees set dept_id = 3 where departments = "Sales";
+
+select e.name, d.department 
+from employees e
+inner join departments d 
+on e.dept_id = d.dept_id;
